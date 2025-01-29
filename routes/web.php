@@ -14,7 +14,7 @@ use App\Http\Controllers\FormController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::post('/submitForm', [storedemo::class, 'submitForm']);
 Route::get('/', [storedemo::class, 'index']);
 
 Route::get('/about', [storedemo::class, 'about']);
