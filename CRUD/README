@@ -1,0 +1,10 @@
+CREATE MODEL
+php artisan make:model Product -m
+
+MAKE CHANGES IN .ENV FILE
+
+CREATE CONTROLLER WITH FUNCION
+php artisan make:controller Controllername --resource
+
+MIGRATE TABLES
+php artisan migrate
