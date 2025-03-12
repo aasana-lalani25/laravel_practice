@@ -36,7 +36,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedata-> $request->validate([
+        $validatedata = $request->validate([
             'name'=>'required',
             'description'=>'required',
             'price'=>'required|numeric'
@@ -54,7 +54,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product=Product::findOrFail($id);
+        return view('products.show',compact('product'));
     }
 
     /**
@@ -65,7 +66,8 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product=Product::findOrFail($id);
+        return view('products.edit',compact('product'));
     }
 
     /**
@@ -77,7 +79,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedata = $request->validate([
+            'name'=>'required',
+            'description'=>'required',
+            'price'=>'required|numeric'
+        ]);
+
+        product::whereId($id)->update($validatedata);
+        return redirect()->route('products.index')->with('sucess','product updated successfully');
     }
 
     /**
@@ -88,6 +97,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product=Product::findOrFail($id);
+        $product ->delete();
+
+        return redirect()->route('products.index')->with('sucess','delted sucess');
     }
 }

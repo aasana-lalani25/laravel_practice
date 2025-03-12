@@ -1,4 +1,4 @@
-
+<h2> Add Products </h2>
 <form action="{{route('products.store')}}" method="POST">
     @csrf
     
